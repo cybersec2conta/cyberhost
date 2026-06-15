@@ -2,12 +2,7 @@
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
 ║   ⚡ CYBERHOST v2.0 - HOSPEDAGEM WEB PROFISSIONAL           ║
-║   Git Pobre • Deploy Automático • Multi-Usuário            ║
-║   PHP • Python • JavaScript • HTML • CSS                   ║
-║                                                              ║
-║   By @cybersecofc                                           ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
+║   Git 
 """
 
 import os
