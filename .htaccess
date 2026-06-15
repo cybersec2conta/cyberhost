@@ -1,0 +1,28 @@
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^(config\.php|cyber\.php|sg\.php|dd\.php|ip\.txt|lixo\.txt|requests\.log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Enable mod_rewrite
+RewriteEngine On
+
+# Prevent access to uploads directory
+RewriteRule ^uploads/.*$ - [F,L]
+
+# Block common attack patterns
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^.*$ - [F,L]
+
+# Limit file upload size
+LimitRequestBody 524288000
+
+# Security headers
+Header set X-Frame-Options "DENY"
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Content-Type-Options "nosniff"
